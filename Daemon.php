@@ -293,6 +293,43 @@ class Daemon {
 			throw $e;
 		}
 	}
+
+	/**
+	 * Reads input via the readline PHP extension if that's available, or fgets() if readline is not installed.
+	 * retrieve line read as a string, or false if input has been closed
+	 *
+	 * @param string $message to echo out before waiting for user input
+	 * @param string $default the default string to be returned when user does not write anything.
+	 *                        Defaults to null, means that default string is disabled.
+	 *
+	 * @return mixed
+	 * @since  XXX
+	 */
+	protected function prompt($message, $default=null) {
+		if($default !== null) {
+			$message.=" [$default] ";
+		} else {
+			$message.=' ';
+		}
+
+		if(extension_loaded('readline')) {
+			$input=readline($message);
+			if($input!==false) {
+				readline_add_history($input);
+			}
+		} else {
+			$this->prompt($message);
+			$input=fgets(STDIN);
+		}
+
+		if($input===false) {
+			return false;
+		} else {
+			$input=trim($input);
+			return ($input==='' && $default!==null) ? $default : $input;
+		}
+	}
+
 	/**
 	 * Remove the pid from current pool of services launched
 	 *
@@ -367,7 +404,21 @@ class Daemon {
 			$activePids = json_decode($this->loadData($this->getPidFile()), true);
 			if($allDaemons === false) {
 				if(isset($activePids[$this->getDaemonName()]) === true) {
-					$activePids = $activePids[$this->getDaemonName()];
+					$savedPids = $activePids[$this->getDaemonName()];
+					$cleanedPids = array();
+					$haveDeadProcesses = false;
+					foreach($savedPids as $pid) {
+						if(posix_getpgid($pid) !== false) {
+							$cleanedPids[] = $pid;
+						} else {
+							$haveDeadProcesses = true;
+						}
+					}
+					if($haveDeadProcesses === true) {
+						$activePids[$this->getDaemonName()] = $cleanedPids;
+						$this->saveData($this->getPidFile(), json_encode($activePids));
+					}
+					$activePids = $cleanedPids;
 				} else {
 					$activePids = array();
 				}
