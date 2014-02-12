@@ -13,7 +13,7 @@
  * @package   sweelix.demo
  */
 
-namespace app;
+namespace demo;
 
 /**
  * Write is a command line which can be runned By the command runner

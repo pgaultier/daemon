@@ -19,7 +19,7 @@
 include('vendor/autoload.php');
 
 /**
- * The runner will search the command into the "app" namespace and run
+ * The runner will search the command into the "demo" namespace and run
  * it if everything goes well
  */
-sweelix\command\Runner::getRunner(array('namespace' => 'app'))->run();
+sweelix\command\Runner::getRunner(array('namespace' => 'demo'))->run();

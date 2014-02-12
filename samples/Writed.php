@@ -13,7 +13,7 @@
  * @package   sweelix.demo
  */
 
-namespace app;
+namespace demo;
 use sweelix\daemon\Daemon;
 
 /**
