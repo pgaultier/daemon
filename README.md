@@ -3,6 +3,7 @@
 ## About
 
 Sweelix\daemon is a PHP 5.3+ library which is used to create long running php scripts
+The [latest class API documentation][apidocs] is available online.
 
 ## Requirements
 
@@ -140,3 +141,4 @@ $daemon = new Writed();
 $daemon->run();
 ```
 
+[apidocs]: http://www.sweelix.net/api/namespaces/sweelix.daemon.html
