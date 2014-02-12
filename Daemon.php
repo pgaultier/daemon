@@ -9,7 +9,7 @@
  * @author	  Philippe Gaultier <pgaultier@sweelix.net>
  * @copyright 2010-2014 Sweelix
  * @license   http://www.sweelix.net/license license
- * @version   XXX
+ * @version   1.0.0
  * @link      http://www.sweelix.net
  * @category  daemon
  * @package   sweelix.daemon
@@ -24,7 +24,7 @@ namespace sweelix\daemon;
  * @author	  Philippe Gaultier <pgaultier@sweelix.net>
  * @copyright 2010-2014 Sweelix
  * @license   http://www.sweelix.net/license license
- * @version   XXX
+ * @version   1.0.0
  * @link      http://www.sweelix.net
  * @category  daemon
  * @package   sweelix.daemon
@@ -61,7 +61,7 @@ class Daemon {
 	 * starts
 	 *
 	 * @return void
-	 * @since  XXX
+	 * @since  1.0.0
 	 */
 	public function setUp() {
 
@@ -71,7 +71,7 @@ class Daemon {
 	 * Clean up daemon before stopping it
 	 *
 	 * @return void
-	 * @since  XXX
+	 * @since  1.0.0
 	*/
 	public function tearDown() {
 
@@ -82,7 +82,7 @@ class Daemon {
 	 * a while(true)
 	 *
 	 * @return void
-	 * @since  XXX
+	 * @since  1.0.0
 	*/
 	public function task() {
 
@@ -95,7 +95,7 @@ class Daemon {
 	 * @param string $data data to store
 	 *
 	 * @return void
-	 * @since  XXX
+	 * @since  1.0.0
 	 */
 	protected function saveData($file, $data) {
 		$fh = fopen($file, 'w');
@@ -109,7 +109,7 @@ class Daemon {
 	 * @param string $file where data has been store
 	 *
 	 * @return string
-	 * @since  XXX
+	 * @since  1.0.0
 	 */
 	protected function loadData($file) {
 		$fh = fopen($file, 'r');
@@ -125,7 +125,7 @@ class Daemon {
 	 * @param integer $gid gid to set to the process
 	 *
 	 * @return void
-	 * @since  XXX
+	 * @since  1.0.0
 	 */
 	public function run($uid = null, $gid = null) {
 		try {
@@ -175,7 +175,7 @@ class Daemon {
 	 * @param integer $pid pid id
 	 *
 	 * @return void
-	 * @since  XXX
+	 * @since  1.0.0
 	 */
 	public function stop($pid = null) {
 		try {
@@ -191,7 +191,7 @@ class Daemon {
 	 * @param integer $pid pid id
 	 *
 	 * @return void
-	 * @since  XXX
+	 * @since  1.0.0
 	 */
 	public function int($pid = null) {
 		try {
@@ -213,7 +213,7 @@ class Daemon {
 	 * @param integer $pid pid id
 	 *
 	 * @return void
-	 * @since  XXX
+	 * @since  1.0.0
 	 */
 	public function term($pid=null) {
 		try {
@@ -237,7 +237,7 @@ class Daemon {
 	 * @param integer $pid pid id
 	 *
 	 * @return void
-	 * @since  XXX
+	 * @since  1.0.0
 	 */
 	public function usr1($pid=null) {
 		try {
@@ -259,7 +259,7 @@ class Daemon {
 	 * @param integer $pid pid id
 	 *
 	 * @return void
-	 * @since  XXX
+	 * @since  1.0.0
 	 */
 	public function usr2($pid=null) {
 		try {
@@ -281,7 +281,7 @@ class Daemon {
 	 * @param boolean $tearDown if true, execute the stop method
 	 *
 	 * @return void
-	 * @since  XXX
+	 * @since  1.0.0
 	 */
 	public function runOnce($setUp = true, $tearDown = true) {
 		try {
@@ -303,7 +303,7 @@ class Daemon {
 	 *                        Defaults to null, means that default string is disabled.
 	 *
 	 * @return mixed
-	 * @since  XXX
+	 * @since  1.0.0
 	 */
 	protected function prompt($message, $default=null) {
 		if($default !== null) {
@@ -336,7 +336,7 @@ class Daemon {
 	 * @param integer $pid pid to remove from the pool
 	 *
 	 * @return void
-	 * @since  XXX
+	 * @since  1.0.0
 	 */
 	protected function removePidFromPool($pid) {
 		try {
@@ -366,7 +366,7 @@ class Daemon {
 	 * Build the path file to access pid files
 	 *
 	 * @return string
-	 * @since  XXX
+	 * @since  1.0.0
 	 */
 	protected function getPidFile() {
 		if($this->_pidFile === null) {
@@ -379,7 +379,7 @@ class Daemon {
 	 * Build the daemon name
 	 *
 	 * @return string
-	 * @since  XXX
+	 * @since  1.0.0
 	 */
 	protected function getDaemonName() {
 		if($this->_daemonName === null) {
@@ -395,7 +395,7 @@ class Daemon {
 	 * @param boolean $allDaemons if true all pids for all daemons will be returned
 	 *
 	 * @return array
-	 * @since  XXX
+	 * @since  1.0.0
 	 */
 	protected function getActivePids($allDaemons = false) {
 		$activePids = array();
@@ -431,7 +431,7 @@ class Daemon {
 	 * Ask the user to choose a pid
 	 *
 	 * @return integer
-	 * @since  XXX
+	 * @since  1.0.0
 	 */
 	protected function selectPid() {
 		$activePids = $this->getActivePids(false);
@@ -457,7 +457,7 @@ class Daemon {
 	 * Override this method to handle the usr1 signal
 	 *
 	 * @return void
-	 * @since  XXX
+	 * @since  1.0.0
 	 */
 	protected function handleSignalUsr1() {
 	}
@@ -466,7 +466,7 @@ class Daemon {
 	 * Override this method to handle the usr2 signal
 	 *
 	 * @return void
-	 * @since  XXX
+	 * @since  1.0.0
 	 */
 	protected function handleSignalUsr2() {
 	}
@@ -476,7 +476,7 @@ class Daemon {
 	 * Output should be stopped
 	 *
 	 * @return void
-	 * @since  XXX
+	 * @since  1.0.0
 	 */
 	protected function handleSignalHup() {
 		// no more console output allowed
@@ -487,7 +487,7 @@ class Daemon {
 	 * Override this method to handle the term signal
 	 *
 	 * @return void
-	 * @since  XXX
+	 * @since  1.0.0
 	 */
 	protected function handleSignalTerm() {
 		//terminated
@@ -498,7 +498,7 @@ class Daemon {
 	 * Override this method to handle the int signal
 	 *
 	 * @return void
-	 * @since  XXX
+	 * @since  1.0.0
 	 */
 	protected function handleSignalInt() {
 		//ctrl-c
@@ -511,7 +511,7 @@ class Daemon {
 	 * @param integer $posixSignal posix signal
 	 *
 	 * @return void
-	 * @since  XXX
+	 * @since  1.0.0
 	 */
 	protected function signalHandler($posixSignal) {
 		try {
@@ -544,7 +544,7 @@ class Daemon {
 	 * @param string $text text to write
 	 *
 	 * @return void
-	 * @since  XXX
+	 * @since  1.0.0
 	 */
 	protected function write($text) {
 		if($this->allowConsoleOutput === true) {
@@ -556,7 +556,7 @@ class Daemon {
 	 * Prepare everything and run daemon
 	 *
 	 * @return void
-	 * @since  XXX
+	 * @since  1.0.0
 	 */
 	protected function runAsDaemon() {
 		try {
