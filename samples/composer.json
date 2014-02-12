@@ -1,0 +1,18 @@
+{
+	"description" : "Testing Daemon",
+	"authors" : [ {
+	"name" : "Philippe Gaultier",
+		"email" : "pgaultier@sweelix.net"
+	} ],
+	"minimum-stability": "dev",
+	"require" : {
+		"php" : ">=5.3.0",
+		"sweelix/daemon" : "*",
+		"sweelix/command" : "*"
+	},
+	"autoload" : {
+		"psr-4" : {
+			"app\\" : ""
+		}
+	}
+}
